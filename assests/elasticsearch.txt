@@ -1,0 +1,65 @@
+# elasticsearch 数据库的建立
+PUT /video
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "text_analyzer": {
+          "tokenizer": "ik_max_word",
+          "filter": "my_pinyin"
+        }, 
+        "completion_analyzer": {
+          "tokenizer": "standard",
+          "filter": "my_pinyin"
+        }
+      },
+      "filter": {
+        "my_pinyin": {
+          "type": "pinyin",
+          "keep_full_pinyin": false,
+          "keep_joined_full_pinyin": true,
+          "keep_original": true,
+          "limit_first_letter_length": 16,
+          "remove_duplicated_term": true,
+          "none_chinese_pinyin_tokenize": false
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "vid": {
+        "type": "keyword"
+      },
+      "uid": {
+        "type": "integer"
+      },
+      "title": {
+        "type": "text",
+        "analyzer": "text_analyzer",
+        "search_analyzer": "text_analyzer",
+        "copy_to": "all"
+      },
+      "descr": {
+        "type": "keyword",
+        "copy_to": "all"
+      },
+      "tags": {
+        "type": "text",
+        "analyzer": "text_analyzer",
+        "search_analyzer": "ik_smart",
+        "copy_to": "all"
+      },
+      "all": {
+        "type": "text",
+        "analyzer": "text_analyzer",
+        "search_analyzer": "ik_smart"
+      },
+      "suggestion": {
+        "type": "completion",
+        "analyzer": "completion_analyzer",
+        "search_analyzer": "standard"
+      }
+    }
+  }
+}

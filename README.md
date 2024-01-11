@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 # elasticsearch-mysql-demo
-=======
-# elasticsearch-mysql-demo
->>>>>>> 792a8749e9d4a587e6441ee4eb6755f4170d7e3d
+使用 `RabbitMQ` 实现了 `Elasticsearch` 和 `MySQL` 之间的数据同步
+1. 搜索功能
+2. 自动补全功能 
+
