@@ -1,0 +1,19 @@
+#logging:
+#    level:
+#        root: debug
+
+spring:
+    rabbitmq:
+        host:
+        port:
+        virtual-host:
+        username:
+        password:
+
+    datasource:
+        url:
+        username:
+        password:
+        driver-class-name:
+server:
+    port: 7070
